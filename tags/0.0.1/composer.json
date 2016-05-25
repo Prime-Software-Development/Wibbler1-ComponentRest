@@ -1,0 +1,28 @@
+{
+	"name": "Trunk/rest",
+	"type": "library",
+	"description": "TrunkSoftware Rest Component",
+	"homepage": "http://www.trunknetworks.com/",
+	"keywords": [],
+	"authors": [
+		{
+			"name": "Narvydas Mekionis",
+			"email": "nm@trunknetworks.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5.9",
+		"trunk/errors": "0.*",
+		"trunk/http": "0.*",
+		"symfony/form": "~2.8|~3.0",
+		"symfony/validator": "~2.8|~3.0",
+		"symfony/serializer": "~2.8|~3.0",
+		"symfony/property-access": "~2.8|~3.0"
+	},
+	"autoload": {
+		"psr-4": { "TrunkSoftware\\Component\\Rest\\": "" },
+		"exclude-from-classmap": [
+			"/Tests/"
+		]
+	}
+}
