@@ -1,0 +1,22 @@
+{
+	"name": "Trunk/rest",
+	"type": "library",
+	"description": "TrunkSoftware Rest Component",
+	"homepage": "http://www.trunknetworks.com/",
+	"keywords": [],
+	"authors": [
+		{
+			"name": "Narvydas Mekionis",
+			"email": "nm@trunknetworks.com"
+		}
+	],
+	"require": {
+		"php": ">=5.5.9"
+	},
+	"autoload": {
+		"psr-4": { "TrunkSoftware\\Component\\Rest\\": "" },
+		"exclude-from-classmap": [
+			"/Tests/"
+		]
+	}
+}
