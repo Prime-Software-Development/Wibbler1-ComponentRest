@@ -12,8 +12,8 @@
 	],
 	"require": {
 		"php": ">=5.5.9",
-		"trunk/errors": "0.*",
-		"trunk/http": "0.*",
+		"trunksoftware/errors": "0.*",
+		"trunksoftware/http": "0.*",
 		"symfony/form": "~2.8|~3.0",
 		"symfony/validator": "~2.8|~3.0",
 		"symfony/serializer": "~2.8|~3.0",
