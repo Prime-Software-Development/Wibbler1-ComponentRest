@@ -33,6 +33,7 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 	protected $request = null;
 	protected $response = null;
 	protected $user = null;
+	protected $agency = null;
 	protected $object = null;
 	protected $debug = false;
 	protected $debug_messages = array();
@@ -61,6 +62,9 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 	public function setOptions( array $options ) {
 		if( isset($options['current_user']) ) {
 			$this->user = $options['current_user'];
+		}
+		if( isset($options['current_agency']) ) {
+			$this->agency = $options['current_agency'];
 		}
 		return $this;
 	}
