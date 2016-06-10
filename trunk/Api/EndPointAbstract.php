@@ -84,24 +84,14 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 			$this->getResponseObject();
 		}
 
-		$errors = $this->response->getErrors();
-
 		if ( $this->response->hasErrors() ) {
-			#$this->response->removeContent( 'data' );
-#			$this->response->setCode( Status::HTTP );
 			$this->response->addContent( 'error', $this->response->getErrors()->toArray() );
-			// if there is ONLY one error set the response code to the error code
-			if( $this->response->hasErrors() === 1 ) {
-				$code = $this->response->getErrors()->getFirst()->getErrorCode();
-				$this->response->setCode( $code );
-			} else {
-				// there are more than one error set HTTP_BAD_REQUEST code
+			// if there are errors and response code is one of success HTTP codes
+			// set code to HTTP_BAD_REQUEST
+			$code = $this->response->getCode();
+			if( Status::HTTP_OK >=  $code && Status::HTTP_MULTIPLE_CHOICES > $code ) {
 				$this->response->setCode( Status::HTTP_BAD_REQUEST );
 			}
-		}
-
-		if( $this->debug ) {
-			$this->response->addContent('debug', $this->debug_messages);
 		}
 
 		$this->response->addContent( array(
@@ -132,24 +122,19 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 
 		return $formFactory->createBuilder( $formTypeClass, $object )->getForm();
 	}
-	protected function validateForm( $formTypeClass, $object, $data ) {
+	protected function validateForm( $formTypeClass, $object, $data, $clearMissing = true  ) {
 		$response = $this->getResponseObject();
 
 		$form = $this->getForm( $formTypeClass, $object );
 		$data = $this->transformRequestData( $data );
-		$form->submit( $data );
+		$form->submit( $data, $clearMissing );
 
 		if( ! $form->isValid()) {
+			$errors = $this->getFormErrors( $form );
 
-			//$this->addNormalizedData( "form_errors", $this->getFormErrors( $form ) );
-
-			$response->addContent( "form_errors", $this->getFormErrors( $form ) );
-
-			$response->addContent( "debug", $form->getData()->toArray(), true );
-
-			/*$this->addNormalizedData( "debug", array(
-				$form->getData()->toArray()
-			) );*/
+			foreach( $errors as $name=>$error ){
+				$response->addError( new Error( $error, $name ) );
+			}
 
 			return false;
 
