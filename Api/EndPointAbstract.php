@@ -32,9 +32,15 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 
 	protected $request = null;
 	protected $response = null;
+	protected $options = null;
+
+	// session token
+	protected $session_token = null;
+
 	protected $user = null;
 	protected $agency = null;
 	protected $object = null;
+
 	protected $debug = false;
 	protected $debug_messages = array();
 	/*protected $error = false;*/
@@ -60,13 +66,28 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 	}
 
 	public function setOptions( array $options ) {
-		if( isset($options['current_user']) ) {
-			$this->user = $options['current_user'];
-		}
-		if( isset($options['current_agency']) ) {
-			$this->agency = $options['current_agency'];
-		}
+		$this->options = $options;
+
+		$this->user = $this->getOption('current_user');
+		$this->agency = $this->getOption('current_agency');
+		$this->session_token = $this->getOption('session_token');
+
 		return $this;
+	}
+
+	public function getOptions()
+	{
+		return $this->options;
+	}
+
+	public function getOption( $name )
+	{
+		if(isset($this->options[ $name ]))
+		{
+			return $this->options[ $name ];
+		}
+
+		return NULL;
 	}
 
 	public function getResponseObject() {
@@ -104,6 +125,11 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 
 	public function getUser() {
 		return $this->user;
+	}
+
+	public function getSessionToken()
+	{
+		return $this->session_token;
 	}
 
 	/**
