@@ -1,6 +1,7 @@
 <?php
 namespace TrunkSoftware\Component\Rest\Api;
 use TrunkSoftware\Component\Errors\Error;
+use TrunkSoftware\Component\Http\Request;
 use TrunkSoftware\Component\Http\Response;
 
 use Symfony\Component\Form\Forms;
@@ -61,6 +62,9 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 		return $this;
 	}
 
+	/**
+	 * @return Request
+	 */
 	public function getRequest() {
 		return $this->request;
 	}
