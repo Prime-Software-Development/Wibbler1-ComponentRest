@@ -1,5 +1,11 @@
 <?php
 namespace TrunkSoftware\Component\Rest\Api;
+
+use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
+use ModelManager\Agency;
+use ModelManager\User;
+
+use Trunk\Wibbler\WibblerDependencyContainer;
 use TrunkSoftware\Component\Errors\Error;
 use TrunkSoftware\Component\Http\Request;
 use TrunkSoftware\Component\Http\Response;
@@ -7,23 +13,17 @@ use TrunkSoftware\Component\Http\Response;
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
 use Symfony\Component\Validator\Validation;
+use Symfony\Component\PropertyAccess\PropertyAccessor;
+use Symfony\Component\Serializer\Serializer;
+use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\EventDispatcher\Tests\Service;
 
 use TrunkSoftware\Component\Http\Status;
 use TrunkSoftware\Component\Serializer\Normalizer\PropelNormalizer;
 use TrunkSoftware\Component\Serializer\Normalizer\DateTimeNormalizer;
 use TrunkSoftware\Component\Serializer\Mapping\Loader\PhpLoader;
 use TrunkSoftware\Component\Serializer\NameConverter\PropelNameConverter;
-use Symfony\Component\PropertyAccess\PropertyAccessor;
-use Symfony\Component\Serializer\Serializer;
-#use TrunkSoftware\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
-
-use Symfony\Component\EventDispatcher\Tests\Service;
-
-use Trunk\Wibbler\WibblerDependencyContainer;
-
 
 abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterface, OptionsInterface
 {
@@ -31,14 +31,26 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 	const MSG_MISSING_DATA = 'Missing data';
 	const MSG_AUTH_FAILED = "Authentication failed";
 
+	/**
+	 * @var null|Request
+	 */
 	protected $request = null;
+	/**
+	 * @var null|Response
+	 */
 	protected $response = null;
 	protected $options = null;
 
 	// session token
 	protected $session_token = null;
 
+	/**
+	 * @var null|User
+	 */
 	protected $user = null;
+	/**
+	 * @var null|Agency
+	 */
 	protected $agency = null;
 	protected $object = null;
 
@@ -127,6 +139,9 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 		return $this->response;
 	}
 
+	/**
+	 * @return User|null
+	 */
 	public function getUser() {
 		return $this->user;
 	}
