@@ -378,7 +378,23 @@ abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterf
 		$this->debug_messages[] = $message;
 	}
 
+	/**
+	 * Gets a module
+	 * @param        $name
+	 * @param string $namespace
+	 * @param null   $option
+	 * @return mixed
+	 */
 	public function getModule( $name, $namespace = "\\Trunk\\Models\\Modules\\", $option = null ) {
 		return WibblerDependencyContainer::Instance()->getModule( $name, $namespace, $option );
+	}
+
+	/**
+	 * Gets a service
+	 * @param $name
+	 * @return bool
+	 */
+	public function getService( $name ) {
+		return WibblerDependencyContainer::Instance()->getService( $name );
 	}
 }
