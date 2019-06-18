@@ -1,5 +1,5 @@
 <?php
-namespace TrunkSoftware\Component\Rest\Api;
+namespace Trunk\Component\Rest\Api;
 
 interface EndPointInterface {
 	public function setRequest( $request );

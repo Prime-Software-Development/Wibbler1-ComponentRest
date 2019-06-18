@@ -1,14 +1,14 @@
 <?php
-namespace TrunkSoftware\Component\Rest\Api;
+namespace Trunk\Component\Rest\Api;
 
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use ModelManager\Agency;
 use ModelManager\User;
 
 use Trunk\Wibbler\WibblerDependencyContainer;
-use TrunkSoftware\Component\Errors\Error;
-use TrunkSoftware\Component\Http\Request;
-use TrunkSoftware\Component\Http\Response;
+use Trunk\Component\Errors\Error;
+use Trunk\Component\Http\Request;
+use Trunk\Component\Http\Response;
 
 use Symfony\Component\Form\Forms;
 use Symfony\Component\Form\Extension\Validator\ValidatorExtension;
@@ -19,11 +19,11 @@ use Symfony\Component\Serializer\Mapping\Factory\ClassMetadataFactory;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\EventDispatcher\Tests\Service;
 
-use TrunkSoftware\Component\Http\Status;
-use TrunkSoftware\Component\Serializer\Normalizer\PropelNormalizer;
-use TrunkSoftware\Component\Serializer\Normalizer\DateTimeNormalizer;
-use TrunkSoftware\Component\Serializer\Mapping\Loader\PhpLoader;
-use TrunkSoftware\Component\Serializer\NameConverter\PropelNameConverter;
+use Trunk\Component\Http\Status;
+use Trunk\Component\Serializer\Normalizer\PropelNormalizer;
+use Trunk\Component\Serializer\Normalizer\DateTimeNormalizer;
+use Trunk\Component\Serializer\Mapping\Loader\PhpLoader;
+use Trunk\Component\Serializer\NameConverter\PropelNameConverter;
 
 abstract class EndPointAbstract implements EndPointInterface, EndPointNameInterface, OptionsInterface
 {
