@@ -29,10 +29,10 @@
 		"trunk/errors": "0.*",
 		"trunk/http": "0.*",
 		"trunk/serializer": "0.*",
-		"symfony/form": "~2.8|~3.0",
-		"symfony/validator": "~2.8|~3.0",
-		"symfony/serializer": "~2.8|~3.0",
-		"symfony/property-access": "~2.8|~3.0"
+		"symfony/form": "4.*",
+		"symfony/validator": "4.*",
+		"symfony/serializer": "4.*",
+		"symfony/property-access": "4.*"
 	},
 	"autoload": {
 		"psr-4": { "Trunk\\Component\\Rest\\": "" },
