@@ -1,43 +1,44 @@
 {
-	"name": "trunk/rest",
-	"type": "library",
-	"description": "TrunkSoftware Rest Component",
-	"homepage": "http://www.trunknetworks.com/",
-	"keywords": [],
-	"authors": [
-		{
-		  "name": "Chris Weller",
-		  "email": "chris.weller@trunknetworks.com"
-		}
-	],
-	"repositories": [
-	  {
-		"type": "vcs",
-		"url": "https://github.com/ChrisWeller/Trunk-Wibbler1-ComponentHttp"
-	  },
-	  {
-		"type": "vcs",
-		"url": "https://github.com/ChrisWeller/Trunk-Wibbler1-ComponentErrors"
-	  },
-	  {
-		"type": "vcs",
-		"url": "https://github.com/ChrisWeller/Trunk-Wibbler1-ComponentSerializer"
-	  }
-	],
-	"require": {
-		"php": ">=7",
-		"trunk/errors": "0.*",
-		"trunk/http": "0.*",
-		"trunk/serializer": "0.*",
-		"symfony/form": "4.*",
-		"symfony/validator": "4.*",
-		"symfony/serializer": "4.*",
-		"symfony/property-access": "4.*"
-	},
-	"autoload": {
-		"psr-4": { "Trunk\\Component\\Rest\\": "" },
-		"exclude-from-classmap": [
-			"/Tests/"
-		]
+  "name": "primesoftwaredevelopment/rest",
+  "type": "library",
+  "description": "Prime Software Development Rest Component",
+  "homepage": "http://www.primesoftwaredevelopment.co.uk/",
+  "authors": [
+	{
+	  "name": "Chris Weller",
+	  "email": "chris.weller@trunknetworks.com"
 	}
+  ],
+  "repositories": [
+	{
+	  "type": "vcs",
+	  "url": "https://github.com/chrisweller/wibbler1-componenthttp"
+	},
+	{
+	  "type": "vcs",
+	  "url": "https://github.com/chrisweller/wibbler1-componenterrors"
+	},
+	{
+	  "type": "vcs",
+	  "url": "https://github.com/chrisweller/wibbler1-componentserializer"
+	}
+  ],
+  "require": {
+	"php": ">=7",
+	"primesoftwaredevelopment/errors": "1.*",
+	"primesoftwaredevelopment/http": "1.*",
+	"primesoftwaredevelopment/serializer": "1.*",
+	"symfony/form": "4.*",
+	"symfony/validator": "4.*",
+	"symfony/serializer": "4.*",
+	"symfony/property-access": "4.*"
+  },
+  "autoload": {
+	"psr-4": {
+	  "Trunk\\Component\\Rest\\": ""
+	},
+	"exclude-from-classmap": [
+	  "/Tests/"
+	]
+  }
 }
